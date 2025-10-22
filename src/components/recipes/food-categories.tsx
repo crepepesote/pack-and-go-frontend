@@ -1,8 +1,12 @@
 import React from 'react';
 
 const CategoryCard = ({ image, title }) => (
-  <div className="flex flex-col items-center group cursor-pointer">
-    <div className="relative mb-4 overflow-hidden rounded-full w-44 h-44 transition-transform duration-300 group-hover:scale-110 shadow-lg">
+  // El contenedor principal de la tarjeta
+  <div className="flex flex-col items-center group cursor-pointer text-center">
+    {/* Contenedor de la imagen: ahora su tamaño cambia con la pantalla */}
+    <div className="relative mb-3 overflow-hidden rounded-full 
+                   w-28 h-28 sm:w-32 sm:h-32 md:w-40 md:h-40 
+                   transition-transform duration-300 group-hover:scale-110 shadow-lg">
       <img 
         src={image} 
         alt={title}
@@ -10,7 +14,8 @@ const CategoryCard = ({ image, title }) => (
       />
       <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-10 transition-opacity duration-300" />
     </div>
-    <h3 className="text-xl font-semibold text-gray-800 transition-colors duration-300 group-hover:text-orange-600">
+    {/* Título: El tamaño del texto también es responsive */}
+    <h3 className="text-base md:text-lg font-semibold text-gray-800 transition-colors duration-300 group-hover:text-orange-600">
       {title}
     </h3>
   </div>
@@ -45,15 +50,16 @@ const FoodCategories = () => {
   ];
 
   return (
-    <div className="bg-white py-16 px-4">
+    // Ajustamos el padding vertical para que sea menos agresivo en móviles
+    <div className="bg-white py-12 md:py-16 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
-        {/* Title */}
-        <h2 className="text-4xl font-bold text-center text-gray-900 mb-12">
-          What's on Your Plate Today?
+        {/* Título principal: ajustamos su tamaño para móviles */}
+        <h2 className="text-3xl sm:text-4xl font-bold text-center text-gray-900 mb-10 md:mb-12">
+          Que te apetéce hoy?
         </h2>
 
-        {/* Categories Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 md:gap-12">
+        {/* Grid de Categorías: ajustamos los gaps y las columnas */}
+        <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-6 gap-x-4 gap-y-8 sm:gap-8">
           {categories.map((category, index) => (
             <CategoryCard key={index} {...category} />
           ))}
